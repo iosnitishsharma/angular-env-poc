@@ -9,7 +9,8 @@ on:
       - dev/*
       - qa/*
       - master/*
-workflow_dispatch:  # This allows manual triggering
+  workflow_dispatch:  # This allows manual triggering
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -34,16 +35,16 @@ jobs:
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
           if [[ "$BRANCH_NAME" == "master" ]]; then
             echo "ENVIRONMENT=production" >> $GITHUB_ENV
-            echo "FIREBASE_TARGET=production" >> $GITHUB_ENV
+            echo "FIREBASE_TARGET=angular-env-poc" >> $GITHUB_ENV  # Change to your actual Firebase target for production
           elif [[ "$BRANCH_NAME" == "dev" ]]; then
             echo "ENVIRONMENT=development" >> $GITHUB_ENV
-            echo "FIREBASE_TARGET=dev" >> $GITHUB_ENV
+            echo "FIREBASE_TARGET=dev-angular-env-poc" >> $GITHUB_ENV  # Dev environment Firebase target
           elif [[ "$BRANCH_NAME" == "qa" ]]; then
             echo "ENVIRONMENT=qa" >> $GITHUB_ENV
-            echo "FIREBASE_TARGET=qa" >> $GITHUB_ENV
+            echo "FIREBASE_TARGET=qa-angular-env-poc" >> $GITHUB_ENV  # QA environment Firebase target
           else
             echo "ENVIRONMENT=development" >> $GITHUB_ENV
-            echo "FIREBASE_TARGET=dev" >> $GITHUB_ENV
+            echo "FIREBASE_TARGET=dev-angular-env-poc" >> $GITHUB_ENV  # Default to dev target for other branches
           fi
 
       - name: Build the Angular App
