@@ -35,8 +35,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "src/environments/enviornment.ts",
+                  "with": "src/environments/enviornment.prod.ts"
                 }
               ],
               "budgets": [
@@ -59,16 +59,16 @@
               "sourceMap": true,
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.dev.ts"
+                  "replace": "src/environments/enviornment.ts",
+                  "with": "src/environments/enviornment.dev.ts"
                 }
               ]
             },
             "qa": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.qa.ts"
+                  "replace": "src/environments/enviornment.ts",
+                  "with": "src/environments/enviornment.qa.ts"
                 }
               ],
               "optimization": true,
