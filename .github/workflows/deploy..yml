@@ -33,7 +33,7 @@ jobs:
             echo "ENVIRONMENT=production" >> $GITHUB_ENV
             echo "FIREBASE_PROJECT_ID=angular-env-poc" >> $GITHUB_ENV
           elif [[ "$BRANCH_NAME" == "dev" ]]; then
-            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+            echo "ENVIRONMENT=development" >> $GITHUB_ENV
             echo "FIREBASE_PROJECT_ID=dev-angular-env-poc" >> $GITHUB_ENV
           elif [[ "$BRANCH_NAME" == "qa" ]]; then
             echo "ENVIRONMENT=qa" >> $GITHUB_ENV
