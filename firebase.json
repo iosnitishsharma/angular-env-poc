@@ -1,8 +1,13 @@
 {
-  "hosting": {
-    "production": {
+  "hosting": [
+    {
+      "target": "dev",
       "public": "dist/angular-environment-app",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -10,9 +15,14 @@
         }
       ]
     },
-    "qa": {
+    {
+      "target": "qa",
       "public": "dist/angular-environment-app",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -20,9 +30,14 @@
         }
       ]
     },
-    "dev": {
+    {
+      "target": "production",
       "public": "dist/angular-environment-app",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -30,5 +45,5 @@
         }
       ]
     }
-  }
+  ]
 }
