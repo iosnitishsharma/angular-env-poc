@@ -34,13 +34,13 @@ jobs:
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
           if [[ "$BRANCH_NAME" == "master" ]]; then
             echo "ENVIRONMENT=production" >> $GITHUB_ENV
-            echo "FIREBASE_PROJECT_ID=angular-env-poc" >> $GITHUB_ENV
+            echo "FIREBASE_PROJECT_ID=infypoc-62ce7" >> $GITHUB_ENV
           elif [[ "$BRANCH_NAME" == "dev" ]]; then
             echo "ENVIRONMENT=development" >> $GITHUB_ENV
-            echo "FIREBASE_PROJECT_ID=dev-angular-env-poc" >> $GITHUB_ENV
+            echo "FIREBASE_PROJECT_ID=infypoc-62ce7" >> $GITHUB_ENV
           elif [[ "$BRANCH_NAME" == "qa" ]]; then
             echo "ENVIRONMENT=qa" >> $GITHUB_ENV
-            echo "FIREBASE_PROJECT_ID=qa-angular-env-poc" >> $GITHUB_ENV
+            echo "FIREBASE_PROJECT_ID=infypoc-62ce7" >> $GITHUB_ENV
           else
             echo "ENVIRONMENT=development" >> $GITHUB_ENV
             echo "FIREBASE_PROJECT_ID=infypoc-62ce7" >> $GITHUB_ENV
