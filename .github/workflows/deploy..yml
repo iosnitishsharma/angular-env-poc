@@ -9,7 +9,7 @@ on:
       - dev/*
       - qa/*
       - master/*
-
+workflow_dispatch:  # This allows manual triggering
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
