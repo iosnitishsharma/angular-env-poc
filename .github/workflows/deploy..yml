@@ -1,4 +1,4 @@
-name: Build and Deploy Angular App to Firebase
+name: Build and Deploy Angular App
 
 on:
   push:
@@ -26,22 +26,27 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the Angular App
-        run: npm run build -- --configuration=$ENVIRONMENT
-
-      - name: Deploy to Firebase Hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Set ENVIRONMENT and Firebase project ID
         run: |
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
-          if [[ "$BRANCH_NAME" == "master" || "$BRANCH_NAME" == master/* ]]; then
-            echo "Deploying to Production..."
-            firebase deploy --only hosting:production
-          elif [[ "$BRANCH_NAME" == "qa" || "$BRANCH_NAME" == qa/* ]]; then
-            echo "Deploying to QA..."
-            firebase deploy --only hosting:qa
-          elif [[ "$BRANCH_NAME" == "dev" || "$BRANCH_NAME" == dev/* ]]; then
-            echo "Deploying to Development..."
-            firebase deploy --only hosting:dev
+          if [[ "$BRANCH_NAME" == "master" ]]; then
+            echo "ENVIRONMENT=production" >> $GITHUB_ENV
+            echo "FIREBASE_PROJECT_ID=angular-env-poc" >> $GITHUB_ENV
+          elif [[ "$BRANCH_NAME" == "dev" ]]; then
+            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+            echo "FIREBASE_PROJECT_ID=dev-angular-env-poc" >> $GITHUB_ENV
+          elif [[ "$BRANCH_NAME" == "qa" ]]; then
+            echo "ENVIRONMENT=qa" >> $GITHUB_ENV
+            echo "FIREBASE_PROJECT_ID=qa-angular-env-poc" >> $GITHUB_ENV
           else
-            echo "Unknown environment, skipping deployment."
+            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+            echo "FIREBASE_PROJECT_ID=dev-angular-env-poc" >> $GITHUB_ENV
+          fi
+
+      - name: Build the Angular App
+        run: npm run build -- --configuration=${{ env.ENVIRONMENT }}
+
+      - name: Deploy to Firebase Hosting
+        run: firebase deploy --only hosting --project ${{ env.FIREBASE_PROJECT_ID }}
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
