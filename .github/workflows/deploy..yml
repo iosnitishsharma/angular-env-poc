@@ -43,7 +43,7 @@ jobs:
             echo "FIREBASE_PROJECT_ID=qa-angular-env-poc" >> $GITHUB_ENV
           else
             echo "ENVIRONMENT=development" >> $GITHUB_ENV
-            echo "FIREBASE_PROJECT_ID=dev-angular-env-poc" >> $GITHUB_ENV
+            echo "FIREBASE_PROJECT_ID=infypoc-62ce7" >> $GITHUB_ENV
           fi
 
       - name: Build the Angular App
