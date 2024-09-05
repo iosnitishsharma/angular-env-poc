@@ -1,0 +1,22 @@
+{
+  "projects": {
+    "default": "infypoc-62ce7"
+  },
+  "targets": {
+    "infypoc-62ce7": {
+      "hosting": {
+        "dev": [
+          "dev-angular-env-poc"
+        ],
+        "qa": [
+          "qa-angular-env-poc"
+        ],
+        "production": [
+          "angular-env-poc"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
